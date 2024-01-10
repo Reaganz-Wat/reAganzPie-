@@ -1,10 +1,13 @@
 package com.example.todolistapp;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ public class cousesActivity extends AppCompatActivity {
     FloatingActionButton button;
     coursesAdapter adapter;
     RecyclerView recyclerView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,31 @@ public class cousesActivity extends AppCompatActivity {
         // get views by ID here
         button = findViewById(R.id.floatingButton);
         recyclerView = findViewById(R.id.coursesRecyclerView);
+        toolbar = findViewById(R.id.coursesToolBar);
 
         // call methods here
+        toolBar();
         clickFloatingButton();
         displayContents();
+    }
+
+    public void toolBar(){
+        if (toolbar != null){
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle("Courses");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return onContextItemSelected(item);
+        }
     }
 
     public void displayContents(){
