@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
-            android:background="#F1F8CA"
+            android:textColor="@color/textColor"
+            android:background="@color/greenColor"
             android:text="Introduction to Modelling and Simulations"
             android:textSize="20sp"/>
         <TextView
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textColor="@color/textColor"
             android:text="Introduction to modelling talks about systems, queing theory and their applications, and how we can avoid trial and eror in systems."
             android:textSize="18sp"/>
         <LinearLayout
@@ -41,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:textColor="@color/textColor"
                 android:layout_marginStart="8dp"
                 android:text="Created At: 24/12/2023"/>
         </LinearLayout>

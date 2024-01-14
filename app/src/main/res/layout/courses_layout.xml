@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
+            android:textColor="@color/textColor"
             android:background="@drawable/course_background"
             android:text="Programming Language Translation"
             android:textSize="20sp"/>
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textColor="@color/textColor"
             android:text="This is the study of compiler design and how it affects code execution, its a theory"
             android:textSize="18sp"/>
         <LinearLayout
@@ -41,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:textColor="@color/textColor"
                 android:layout_marginStart="8dp"
                 android:text="43 Cards"/>
         </LinearLayout>
