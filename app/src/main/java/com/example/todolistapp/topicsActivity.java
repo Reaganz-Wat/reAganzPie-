@@ -89,6 +89,10 @@ public class topicsActivity extends AppCompatActivity {
         topicsViews.findViewById(R.id.dialogCreateBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // dismiss the alertdialog
+                alertDialog.dismiss();
+
                 // get the user input from those edittext in the topicsView inflated
                 String topicName = ((EditText) topicsViews.findViewById(R.id.dialogCourse)).getText().toString();
                 String topicDescription = ((EditText) topicsViews.findViewById(R.id.dialogDescription)).getText().toString();
