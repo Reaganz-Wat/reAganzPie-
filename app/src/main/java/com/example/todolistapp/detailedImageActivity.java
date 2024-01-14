@@ -9,7 +9,7 @@ import com.jsibbold.zoomage.ZoomageView;
 
 public class detailedImageActivity extends AppCompatActivity {
 
-    public int ID;
+    public String ID;
     //ImageView imageView;
     ZoomageView imageView;
     @Override
@@ -17,7 +17,7 @@ public class detailedImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_image);
 
-        ID = getIntent().getIntExtra("URL", 0);
+        ID = getIntent().getStringExtra("URL");
         imageView = findViewById(R.id.bigImage);
 
         Glide.with(this)

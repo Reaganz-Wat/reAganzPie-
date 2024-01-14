@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -99,21 +100,78 @@ public class DBManager {
         return database.insert("TopicResources", null, values);
     }
 
+//    public List<topicResourcesModal> getAllTopicResources(long topicId) {
+//        List<topicResourcesModal> resources = new ArrayList<>();
+//        String selection = "topicID=?";
+//        String[] selectionArgs = {String.valueOf(topicId)};
+//        Cursor cursor = database.query("TopicResources", null, selection, selectionArgs, null, null, null);
+//
+//        if (cursor != null) {
+//            String[] columnNames = cursor.getColumnNames();
+//            for (String columnName : columnNames) {
+//                Log.d("DBManager", "Column Name: " + columnName);
+//            }
+//
+//            if (cursor.moveToFirst()) {
+//                do {
+//                    topicResourcesModal resource = new topicResourcesModal();
+//
+//                    // Add these log statements
+//                    Log.d("DBManager", "Column Index for imageURL: " + cursor.getColumnIndex("imageURL"));
+//                    Log.d("DBManager", "Image URL: " + cursor.getString(cursor.getColumnIndex("imageURL")));
+//
+//
+//                    resource.setResourceID(cursor.getInt(cursor.getColumnIndex("resourceID")));
+//                    resource.setImageURL(cursor.getString(cursor.getColumnIndex("imageURL")));
+//                    resources.add(resource);
+//                } while (cursor.moveToNext());
+//            }
+//        }
+//
+//
+//        return resources;
+//    }
+
     public List<topicResourcesModal> getAllTopicResources(long topicId) {
         List<topicResourcesModal> resources = new ArrayList<>();
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String[] projection = {
+                "resourceID",
+                "topicID",
+                "imageUrl",
+                "created_at"
+        };
+
         String selection = "topicID=?";
         String[] selectionArgs = {String.valueOf(topicId)};
-        Cursor cursor = database.query("TopicResources", null, selection, selectionArgs, null, null, null);
 
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                topicResourcesModal resource = new topicResourcesModal();
-                resource.setTopicID(cursor.getInt(cursor.getColumnIndex("resourceID")));
-                resource.setImageURL(cursor.getString(cursor.getColumnIndex("imageURL")));
-                resources.add(resource);
-            } while (cursor.moveToNext());
+        Cursor cursor = db.query(
+                "TopicResources",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
 
-            cursor.close();
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    topicResourcesModal resource = new topicResourcesModal();
+                    resource.setResourceID(cursor.getInt(cursor.getColumnIndexOrThrow("resourceID")));
+                    resource.setTopicID(cursor.getInt(cursor.getColumnIndexOrThrow("topicID")));
+                    resource.setImageURL(cursor.getString(cursor.getColumnIndexOrThrow("imageUrl")));
+                    resource.setCreatedAt(new Date(cursor.getLong(cursor.getColumnIndexOrThrow("created_at"))));
+                    resources.add(resource);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
 
         return resources;

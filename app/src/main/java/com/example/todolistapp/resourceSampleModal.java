@@ -1,17 +1,17 @@
 package com.example.todolistapp;
 
 public class resourceSampleModal {
-    public int URL;
+    public String URL;
 
-    public resourceSampleModal(int URL) {
+    public resourceSampleModal(String URL) {
         this.URL = URL;
     }
 
-    public int getURL() {
+    public String getURL() {
         return URL;
     }
 
-    public void setURL(int URL) {
+    public void setURL(String URL) {
         this.URL = URL;
     }
 }

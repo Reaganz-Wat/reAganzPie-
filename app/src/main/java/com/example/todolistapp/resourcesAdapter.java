@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class resourcesAdapter extends RecyclerView.Adapter <resourcesAdapter.ResourceViewHolder> {
@@ -32,7 +34,13 @@ public class resourcesAdapter extends RecyclerView.Adapter <resourcesAdapter.Res
     @Override
     public void onBindViewHolder(@NonNull ResourceViewHolder holder, int position) {
         resourceSampleModal modal = arrayList.get(position);
-        holder.imageView.setImageResource(modal.getURL());
+        //holder.imageView.setImageResource(modal.getURL());
+
+        // Load the image from URL using Glide
+        Glide.with(context)
+                .load(modal.getURL())
+                .into(holder.imageView);
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
