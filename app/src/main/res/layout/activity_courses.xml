@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".cousesActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/coursesToolBar"
         android:layout_width="match_parent"
-        android:background="@color/lightBlue"
+        android:background="@color/greenColor"
         android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
