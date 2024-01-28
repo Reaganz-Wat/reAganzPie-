@@ -19,10 +19,13 @@ public class detailedImageActivity extends AppCompatActivity {
 
         ID = getIntent().getStringExtra("URL");
         imageView = findViewById(R.id.bigImage);
+        imageView.setZoomable(true);
+
 
         Glide.with(this)
                 .load(ID)
                 .placeholder(R.mipmap.ic_launcher)
+                .fitCenter()
                 .error(R.mipmap.ic_launcher_round)
                 .into(imageView);
     }

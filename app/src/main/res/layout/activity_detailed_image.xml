@@ -12,6 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="2dp"
+        app:zoomage_maxScale="8"
+        app:zoomage_minScale="0.6"
+        app:zoomage_restrictBounds="false"
+        app:zoomage_translatable="true"
+        app:zoomage_autoCenter="true"
+        app:zoomage_autoResetMode="UNDER"
+        app:zoomage_animateOnReset="true"
         android:src="@mipmap/logo"/>
 
 
