@@ -134,7 +134,12 @@ public class topicsActivity extends AppCompatActivity {
         DBManager dbManager = new DBManager(this);
         dbManager.open();
 
+        // fetch all the topics
         List <topicsModal> topicsList = dbManager.getAllTopics(courseID);
+
+        // close the database connection
+        dbManager.close();
+
         ArrayList <topicLayoutModal> arrayList = new ArrayList <topicLayoutModal> ();
 
         for (topicsModal topic : topicsList){
